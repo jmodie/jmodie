@@ -115,9 +115,9 @@
 
       <td>string</td>
 
-      <td>Column visibility and sort configuration.<br />
-      <br />
-      Available column names:<br />
+      <td>Column visibility and sort configuration.
+    
+      <p>Available column names:</p>
       <span class="programtext">.prj_files location</span>,
       <span class="programtext">address</span>, <span class=
       "programtext">created</span>, <span class="programtext">custom
@@ -140,10 +140,10 @@
       <span class="programtext">started</span>, <span class=
       "programtext">state</span>, <span class=
       "programtext">username</span>, <span class="programtext">warning
-      count</span><br />
-      <br />
-      See Specifying Table
-      Configurations for details on available syntax.</td>
+      count</span>
+      
+      <p>See Specifying Table
+      Configurations for details on available syntax.</p>
 
       <td><span class="programtext">[project.sort:asc][project
       id.sort:desc]</span>
@@ -159,9 +159,8 @@
 
       <td>
         The name of a saved warning search or its ID. Note the
-        following:<br />
-        <br />
-
+        following:
+        
 
         <ul>
           <li>The filter value can be interpreted as either a filter ID
