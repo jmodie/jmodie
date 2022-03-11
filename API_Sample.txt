@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy; see www.w3.org" />
+
+  <title>Project Search</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="template" content="../../CSheader.htt" />
+</head>
+
+<body>
+  <?rh-placeholder type="header" ?>
+
+
+  <div>
+    @CONTENT_GENERAL@
+  </div>
+
+
+  <div class="topmenu">
+    <hr />
+
+
+    <ul class="horizmenu">
+      <li>HTTP API</a>
+      </li>
+    </ul>
+
+    <hr style="clear:both" />
+  </div>
+
+
+  <h2>Project Search</h2>
+
+  <hr />
+
+
+  <ul class="horizmenu">
+    <li><a href="#overview">Overview</a>
+    </li>
+
+
+    <li><a href="#example">Example</a>
+    </li>
+  </ul>
+
+  <hr />
+
+
+  <h3><a name="overview" id="overview">Overview</a>
+  </h3>
+
+
+  <p>Retrieve a set of projects.</p>
+
+
+  <table summary="project query parameters">
+    <tr>
+      <td colspan="5" scope="col">
+        <h4 class="api">GET /project_search.csv<br />
+        GET /project_search.xml<br />
+        GET /project_search.html</h4>
+      </td>
+    </tr>
+
+
+    <tr>
+      <th scope="col">&#160;</th>
+
+      <th scope="col">Name</th>
+
+      <th scope="col">Type</th>
+
+      <th scope="col">Description</th>
+
+      <th scope="col">Default</th>
+    </tr>
+
+
+    <tr>
+      <td rowspan="5">Query parameters</td>
+
+      <td><span class="programtext">query</span>
+      </td>
+
+      <td>string</td>
+
+      <td>Search query specified in the Project Search
+      Language</a>. This constrains the set of projects returned.</td>
+
+      <td>Empty string; all projects on the hub will match.</td>
+    </tr>
+
+
+    <tr>
+      <td><span class="programtext">scope</span>
+      </td>
+
+      <td>string</td>
+
+      <td><span class="programtext">all</span> - Search all projects on
+      the hub.</td>
+
+      <td><span class="programtext">all</span>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td><span class="programtext">sprjgrid</span>
+      </td>
+
+      <td>string</td>
+
+      <td>Column visibility and sort configuration.<br />
+      <br />
+      Available column names:<br />
+      <span class="programtext">.prj_files location</span>,
+      <span class="programtext">address</span>, <span class=
+      "programtext">created</span>, <span class="programtext">custom
+      auto deletion rules</span>, <span class="programtext">dry
+      run</span>, <span class="programtext">file count</span>,
+      <span class="programtext">finished</span>, <span class=
+      "programtext">hub user</span>, <span class=
+      "programtext">install</span>, <span class="programtext">last
+      analysis</span>, <span class="programtext">last analysis
+      description</span>, <span class="programtext">last analysis
+      id</span>, <span class="programtext">last analysis protected from
+      auto deletion</span>, <span class="programtext">linking
+      started</span>, <span class="programtext">machine</span>,
+      metric, <span class=
+      "programtext">modified</span>, <span class="programtext">parent
+      id</span>, <span class="programtext">parent name</span>,
+      <span class="programtext">path</span>, <span class=
+      "programtext">project</span>, <span class="programtext">project
+      description</span>, <span class="programtext">project id</span>,
+      <span class="programtext">started</span>, <span class=
+      "programtext">state</span>, <span class=
+      "programtext">username</span>, <span class="programtext">warning
+      count</span><br />
+      <br />
+      See Specifying Table
+      Configurations for details on available syntax.</td>
+
+      <td><span class="programtext">[project.sort:asc][project
+      id.sort:desc]</span>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td><span class="programtext">filter</span>
+      </td>
+
+      <td>string or integer</td>
+
+      <td>
+        The name of a saved warning search or its ID. Note the
+        following:<br />
+        <br />
+
+
+        <ul>
+          <li>The filter value can be interpreted as either a filter ID
+          or a filter name. If the value is numerical, it will be
+          interpreted as a filter ID. Otherwise, it will be interpreted
+          as a filter name. If the value is encapsulated in quotes, it
+          will always be interpreted as a filter name.</li>
+
+
+          <li>If you enter an invalid name, the default visibility
+          filter is applied.</li>
+
+
+          <li>If two saved searches have identical names, and you try
+          to filter by this search, the search with the lower ID will
+          be applied.</li>
+
+
+          <li>You may still specify filters by ID (for example,
+          <span class="programtext">filter=1</span>). The ID value of
+          saved searches can be determined by inspecting the
+          <b>Projects</b> tab of the Saved Searches
+          page.</li>
+        </ul>
+      </td>
+
+      <td>The most recent filter used by the authenticated user, or the
+     default filter set by a hub administrator for Anonymous.</td>
+    </tr>
+
+
+    <tr>
+      <td><span class="programtext">sprjgridp</span>
+      </td>
+
+      <td>integer</td>
+
+      <td>Only applies to HTML format. Specifies the offset of the
+      first row of the result set at which the table should
+      begin.<br />
+      <br />
+      The CSV and XML formats are not paginated; the entire result is
+      sent in a single response.</td>
+
+      <td><span class="programtext">1</span>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td colspan="2">Response</td>
+
+      <td><span class="programtext">200</span>
+      </td>
+
+      <td colspan="2">Success. A set of projects in the requested
+      format.</td>
+    </tr>
+
+
+    <tr>
+      <td colspan="3">Authentication</td>
+
+      <td colspan="2">Use HTTP Basic
+      Auth</td>
+    </tr>
+
+
+    <tr>
+      <td colspan="3">Authorization</td>
+
+      <td colspan="2">The authenticated user will only be sent projects
+      for which the user possesses the PROJECT_EXISTS permission. Any other
+      projects will be absent from the response.</td>
+    </tr>
+  </table>
+
+
+  <h3><a name="example" id="example">Example</a>
+  </h3>
+
+
+  <h4>Search the most recent projects for &quot;basic&quot;, sorted by
+  descending timestamp, using &quot;all&quot; filter, in CSV
+  format</h4>
+
+
+  <div class="codeblock" style="margin-top:2em">
+    <pre>
+$ curl &#39;http://Alex:default123@potato:7340/project_search.csv?query=basic&amp;sprjgrid\[started.sort:desc\]&amp;filter=all&#39;
+project,state,started,lines with code,url
+BasicProj328,Finished,Fri Feb 26 14:38:26 2021,41,/analysis/235.csv
+BasicProj654,Parsing over; Native build failed,Fri Feb 26 14:34:55 2021,&quot;&quot;,/analysis/234.csv
+BasicProj123,Parsing over; Awaiting analysis or more parsing,Wed Dec 16 13:57:54 2020,&quot;&quot;,/analysis/233.csv
+BasicJavaProj123,Finished,Tue Nov 10 14:37:41 2020,41,/analysis/184.csv
+apache-ant-1.8.4-julia-basic,Finished,Wed May 27 15:01:08 2020,127720,/analysis/31.csv
+</pre>
+  </div>
+
+
+  <ul>
+    <li><span class="programtext">Alex</span> is the username used for
+    authentication and <span class="programtext">default123</span> is
+    Alex&#39;s password.</li>
+
+
+    <li>The computer is named <span class=
+    "programtext">&#39;potato&#39;</span> and the hub is located at
+    port 7340.</li>
+
+
+    <li>The request path is <span class=
+    "programtext">/project_search.csv</span>.</li>
+
+
+    <li><span class="programtext">query=basic</span>: search for
+    projects whose name includes <span class=
+    "programtext">basic</span>.</li>
+
+
+    <li><span class=
+    "programtext">sprjgrid=\[started.sort:desc\]</span>: sort results
+    by descending start timestamp. Note the square brackets have been
+    escaped for cURL, but need not be escaped in the HTTP request.</li>
+
+
+    <li><span class="programtext">filter=all</span>: do not apply any
+    filter to the warnings besides those implied by query and
+    scope.</li>
+  </ul>
+  <?rh-placeholder type="footer" ?>
+  </body>
+</html>
